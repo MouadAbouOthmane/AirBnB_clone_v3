@@ -83,3 +83,19 @@ class DBStorage:
                     filter(classes[clss].id == id).first()
                 return (obj)
         return None
+
+    def count(self, cls=None):
+        """Returns number of objects in storage matching the given class."""
+        if cls is None:
+            # ## method 1
+            # numObjs = 0
+            # for clss in classes:
+            #     numObjs += self.__session.query(classes[clss]).count()
+            # return (numObjs)
+
+            # ## method 2
+            return len(DBStorage.all(self))
+        for clss in classes:
+            if cls is classes[clss] or cls is clss:
+                numObjs = self.__session.query(classes[clss]).count()
+                return (numObjs)
