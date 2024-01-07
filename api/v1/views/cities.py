@@ -65,7 +65,7 @@ def create_city(state_id):
                  methods={'PUT'},
                  strict_slashes=False)
 def update_city(city_id):
-    """ Update a state"""
+    """ Update a city"""
 
     city = storage.get(City, city_id)
     if not city:
@@ -75,7 +75,7 @@ def update_city(city_id):
     if not data:
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
 
-    # Ignore keys: id, created_at and updated_at
+    # Ignore keys: id, state_id, created_at and updated_at
     for key in ['updated_at', 'created_at', 'id', 'state_id']:
         if key in data:
             del data[key]
