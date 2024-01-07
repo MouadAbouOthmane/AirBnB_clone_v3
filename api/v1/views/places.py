@@ -46,7 +46,7 @@ def del_place(place_id):
     return make_response(jsonify({}), 200) if result else abort(404)
 
 
-@app_views.route('/citys/<city_id>/cities',
+@app_views.route('/cities/<city_id>/places',
                  methods={'POST'},
                  strict_slashes=False)
 def create_place(city_id):
