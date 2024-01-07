@@ -15,6 +15,8 @@ import json
                  strict_slashes=False)
 def get_cities(state_id):
     """Retrieves the list of all City"""
+    if not storage.get(State, state_id):
+        abort(404)
     lst = []
     for city in storage.all(City).values():
         if city.state_id == state_id:
