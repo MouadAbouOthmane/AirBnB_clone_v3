@@ -16,7 +16,7 @@ import json
                  strict_slashes=False)
 def get_places(city_id):
     """Retrieves the list of all Place"""
-    if storage.get(City, city_id):
+    if not storage.get(City, city_id):
         abort(404)
     lst = []
     for place in storage.all(Place).values():
